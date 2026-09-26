@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowOutward, Close, GitHub } from '@mui/icons-material';
+import { ArrowOutward, Close, GitHub, Inventory2, School } from '@mui/icons-material';
 import { Box, Button, Card, CardActionArea, CardContent, Chip, Container, Dialog, DialogContent, DialogTitle, IconButton, Stack, Typography } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { projects } from '../data/data.js';
+
+const coverIcons = { inventory: Inventory2, school: School, github: GitHub };
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -23,13 +25,23 @@ export default function Projects() {
           {projects.map((project, index) => (
             <Card key={project.title} component={motion.div} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.45, delay: index * 0.1 }} sx={{ height: '100%', border: 1, borderColor: 'divider', bgcolor: 'background.default' }}>
               <CardActionArea onClick={() => setSelectedProject(project)} aria-label={`Lihat detail ${project.title}`}>
-                <Swiper modules={[Pagination]} pagination={{ clickable: true }} spaceBetween={0} slidesPerView={1}>
-                  {project.images.map((image) => (
-                    <SwiperSlide key={image}>
-                      <Box component="img" src={image} alt={`Tampilan ${project.title}`} loading="lazy" sx={{ width: '100%', aspectRatio: '1.55', objectFit: 'cover', display: 'block' }} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+                {project.images.length > 0 ? (
+                  <Swiper modules={[Pagination]} pagination={{ clickable: true }} spaceBetween={0} slidesPerView={1}>
+                    {project.images.map((image) => (
+                      <SwiperSlide key={image}>
+                        <Box component="img" src={image} alt={`Tampilan ${project.title}`} loading="lazy" sx={{ width: '100%', aspectRatio: '1.55', objectFit: 'cover', display: 'block' }} />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                ) : (
+                  <Box sx={{ aspectRatio: '1.55', display: 'grid', placeContent: 'center', justifyItems: 'center', gap: 1, bgcolor: 'secondary.main', color: 'primary.main' }}>
+                    {(() => {
+                      const CoverIcon = coverIcons[project.coverIcon];
+                      return <CoverIcon sx={{ fontSize: 42 }} />;
+                    })()}
+                    <Typography variant="overline" fontWeight={700}>{project.coverLabel}</Typography>
+                  </Box>
+                )}
                 <CardContent sx={{ p: 2.5 }}>
                   <Typography variant="overline" color="text.secondary" fontWeight={700}>{project.category}</Typography>
                   <Typography variant="h5" sx={{ mt: 0.4, fontSize: 22 }}>{project.title}</Typography>
@@ -40,8 +52,8 @@ export default function Projects() {
                 </CardContent>
               </CardActionArea>
               <Stack direction="row" spacing={1} sx={{ px: 2.5, pb: 2.5, mt: -1 }}>
-                <Button component="a" href={project.demo} target="_blank" rel="noreferrer" size="small" endIcon={<ArrowOutward />} onClick={(event) => event.stopPropagation()}>Live Demo</Button>
-                <Button component="a" href={project.source} target="_blank" rel="noreferrer" size="small" startIcon={<GitHub />} onClick={(event) => event.stopPropagation()}>Source Code</Button>
+                {project.demo && <Button component="a" href={project.demo} target="_blank" rel="noreferrer" size="small" endIcon={<ArrowOutward />} onClick={(event) => event.stopPropagation()}>Live Demo</Button>}
+                {project.source && <Button component="a" href={project.source} target="_blank" rel="noreferrer" size="small" startIcon={<GitHub />} onClick={(event) => event.stopPropagation()}>Source Code</Button>}
               </Stack>
             </Card>
           ))}
@@ -56,14 +68,14 @@ export default function Projects() {
               <IconButton aria-label="Tutup detail proyek" onClick={() => setSelectedProject(null)} sx={{ position: 'absolute', right: 12, top: 12 }}><Close /></IconButton>
             </DialogTitle>
             <DialogContent>
-              <Box component="img" src={selectedProject.images[0]} alt={`Tampilan ${selectedProject.title}`} sx={{ display: 'block', width: '100%', aspectRatio: '1.6', objectFit: 'cover', borderRadius: 1, mb: 2 }} />
+              {selectedProject.images.length > 0 && <Box component="img" src={selectedProject.images[0]} alt={`Tampilan ${selectedProject.title}`} sx={{ display: 'block', width: '100%', aspectRatio: '1.6', objectFit: 'cover', borderRadius: 1, mb: 2 }} />}
               <Typography color="text.secondary" sx={{ lineHeight: 1.8 }}>{selectedProject.details}</Typography>
               <Stack direction="row" flexWrap="wrap" gap={0.8} sx={{ mt: 2.5 }}>
                 {selectedProject.technologies.map((technology) => <Chip key={technology} size="small" label={technology} />)}
               </Stack>
               <Stack direction="row" spacing={1} sx={{ mt: 2.5, mb: 1 }}>
-                <Button component="a" href={selectedProject.demo} target="_blank" rel="noreferrer" variant="contained" endIcon={<ArrowOutward />}>Live Demo</Button>
-                <Button component="a" href={selectedProject.source} target="_blank" rel="noreferrer" startIcon={<GitHub />}>GitHub</Button>
+                {selectedProject.demo && <Button component="a" href={selectedProject.demo} target="_blank" rel="noreferrer" variant="contained" endIcon={<ArrowOutward />}>Live Demo</Button>}
+                {selectedProject.source && <Button component="a" href={selectedProject.source} target="_blank" rel="noreferrer" startIcon={<GitHub />}>GitHub</Button>}
               </Stack>
             </DialogContent>
           </>

@@ -15,10 +15,10 @@ export default function Hero() {
             <Typography variant="h1" sx={{ mt: 2, fontSize: { xs: 48, sm: 64, md: 78 }, lineHeight: 1.02, maxWidth: 680 }}>
               Halo, saya {profile.name.split(' ')[0]}<Box component="span" sx={{ color: 'secondary.main' }}>.</Box>
             </Typography>
-            <Typography variant="h5" sx={{ mt: 2.5, color: 'text.secondary', fontWeight: 500 }}>{profile.role} yang peduli pada detail.</Typography>
+            <Typography variant="h5" sx={{ mt: 2.5, color: 'text.secondary', fontWeight: 500 }}>{profile.headline}</Typography>
             <Typography sx={{ mt: 2, maxWidth: 570, color: 'text.secondary', lineHeight: 1.8 }}>{profile.bio}</Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1.5} sx={{ mt: 4, alignItems: { xs: 'stretch', sm: 'center' } }}>
-              <Button variant="contained" color="primary" href={profile.cvUrl} download endIcon={<ArrowDownward />}>Download CV</Button>
+              <Button variant="contained" color="primary" href={profile.cvUrl} download={profile.cvFileName} endIcon={<ArrowDownward />}>Download CV</Button>
               <Button variant="text" href="#contact" endIcon={<ArrowOutward />}>Hubungi Saya</Button>
             </Stack>
           </Box>
@@ -28,11 +28,19 @@ export default function Hero() {
               src={profile.portrait}
               alt={`Foto profil ${profile.name}`}
               variant="rounded"
-              sx={{ position: 'relative', width: '100%', height: { xs: 350, sm: 430 }, borderRadius: 2, bgcolor: 'divider', filter: 'saturate(0.78)' }}
+              sx={{
+                position: 'relative',
+                width: '100%',
+                height: { xs: 470, sm: 560 },
+                borderRadius: 2,
+                bgcolor: 'divider',
+                filter: 'saturate(0.78)',
+                '& img': { objectPosition: 'center top' },
+              }}
             />
             <Box sx={{ position: 'absolute', left: -16, bottom: 22, bgcolor: 'background.paper', border: 1, borderColor: 'divider', borderRadius: 1, px: 2, py: 1.3 }}>
               <Typography variant="caption" color="text.secondary">Saat ini</Typography>
-              <Typography variant="body2" fontWeight={700}>Membangun produk digital</Typography>
+              <Typography variant="body2" fontWeight={700}>Junior Software Quality Assurance</Typography>
             </Box>
           </Box>
         </Box>

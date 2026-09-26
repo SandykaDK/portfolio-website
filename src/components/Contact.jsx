@@ -1,9 +1,9 @@
 import { motion } from 'framer-motion';
-import { AlternateEmail, GitHub, Instagram, LinkedIn, NorthEast } from '@mui/icons-material';
+import { AlternateEmail, Call, LinkedIn, NorthEast } from '@mui/icons-material';
 import { Box, Container, IconButton, Stack, Typography } from '@mui/material';
 import { profile } from '../data/data.js';
 
-const socialIcons = { linkedin: LinkedIn, github: GitHub, instagram: Instagram, email: AlternateEmail };
+const socialIcons = { linkedin: LinkedIn, email: AlternateEmail, phone: Call };
 
 export default function Contact() {
   return (
@@ -25,8 +25,9 @@ export default function Contact() {
                   key={social.label}
                   component="a"
                   href={social.href}
-                  target={social.icon === 'email' ? undefined : '_blank'}
-                  rel={social.icon === 'email' ? undefined : 'noreferrer'}
+                  target={social.icon === 'linkedin' ? '_blank' : undefined}
+                  rel={social.icon === 'linkedin' ? 'noreferrer' : undefined}
+                  title={social.label}
                   aria-label={social.label}
                   sx={{ width: 48, height: 48, border: 1, borderColor: 'divider', transition: 'transform 160ms ease, background-color 160ms ease', '&:hover': { transform: 'translateY(-3px)', bgcolor: 'secondary.main', borderColor: 'secondary.main', color: 'primary.contrastText' } }}
                 >

@@ -12,8 +12,16 @@ export default function Experience() {
           {experience.map((item, index) => (
             <Box key={`${item.company}-${item.position}`} component={motion.article} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.5, delay: index * 0.1 }} sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '220px 1fr' }, gap: { xs: 2, md: 5 }, py: 3.5, borderTop: 1, borderColor: 'divider' }}>
               <Box>
+                {item.logo && (
+                  <Box
+                    component="img"
+                    src={item.logo}
+                    alt={`Logo ${item.company}`}
+                    sx={{ width: { xs: 150, md: 180 }, height: { xs: 100, md: 120 }, objectFit: 'contain', objectPosition: 'left center', mb: 2 }}
+                  />
+                )}
                 <Typography variant="body2" fontWeight={700}>{item.period}</Typography>
-                <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{item.location}</Typography>
+                {item.location && <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>{item.location}</Typography>}
               </Box>
               <Box>
                 <Typography variant="h5" sx={{ fontSize: 22 }}>{item.position}</Typography>

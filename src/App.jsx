@@ -10,7 +10,7 @@ import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState('dark');
   const theme = getTheme(mode);
 
   return (

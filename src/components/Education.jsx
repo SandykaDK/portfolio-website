@@ -18,10 +18,22 @@ export default function Education() {
           {education.map((item, index) => (
             <Grid item xs={12} md={6} key={item.institution}>
               <Box component={motion.article} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45, delay: index * 0.1 }} sx={{ height: '100%', p: { xs: 2.5, md: 3.5 }, border: 1, borderColor: 'divider', borderRadius: 1 }}>
-                <Typography variant="overline" color="text.secondary" fontWeight={700}>{item.period}</Typography>
-                <Typography variant="h5" sx={{ mt: 1, fontSize: 21 }}>{item.institution}</Typography>
-                <Typography sx={{ mt: 0.5, color: 'primary.main', fontWeight: 600 }}>{item.degree}</Typography>
-                <Typography variant="body2" sx={{ mt: 2, color: 'text.secondary', lineHeight: 1.75 }}>{item.achievement}</Typography>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 2, sm: 2.5 }} alignItems={{ sm: 'flex-start' }}>
+                  {item.logo && (
+                    <Box
+                      component="img"
+                      src={item.logo}
+                      alt={`Logo ${item.institution}`}
+                      sx={{ width: { xs: 110, sm: 128 }, height: { xs: 84, sm: 96 }, objectFit: 'contain', flexShrink: 0, bgcolor: '#ffffff', borderRadius: 1, p: 1 }}
+                    />
+                  )}
+                  <Box>
+                    <Typography variant="overline" color="text.secondary" fontWeight={700}>{item.period}</Typography>
+                    <Typography variant="h5" sx={{ mt: 1, fontSize: 21 }}>{item.institution}</Typography>
+                    <Typography sx={{ mt: 0.5, color: 'primary.main', fontWeight: 600 }}>{item.degree}</Typography>
+                    <Typography variant="body2" sx={{ mt: 2, color: 'text.secondary', lineHeight: 1.75 }}>{item.achievement}</Typography>
+                  </Box>
+                </Stack>
               </Box>
             </Grid>
           ))}
