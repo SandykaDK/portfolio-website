@@ -13,7 +13,7 @@ export default function Hero() {
               {profile.location} <Box component="span" sx={{ color: 'secondary.main' }}>·</Box> OPEN TO WORK
             </Typography>
             <Typography variant="h1" sx={{ mt: 2, fontSize: { xs: 48, sm: 64, md: 78 }, lineHeight: 1.02, maxWidth: 680 }}>
-              Halo, saya {profile.name}<Box component="span" sx={{ color: 'secondary.main' }}>.</Box>
+              {profile.name}<Box component="span" sx={{ color: 'secondary.main' }}>.</Box>
             </Typography>
             <Typography variant="h5" sx={{ mt: 2.5, color: 'text.secondary', fontWeight: 500 }}>{profile.headline}</Typography>
             <Typography sx={{ mt: 2, maxWidth: 570, color: 'text.secondary', lineHeight: 1.8 }}>{profile.bio}</Typography>
