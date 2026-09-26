@@ -31,6 +31,7 @@ export default function Education() {
                     <Typography variant="overline" color="text.secondary" fontWeight={700}>{item.period}</Typography>
                     <Typography variant="h5" sx={{ mt: 1, fontSize: 21 }}>{item.institution}</Typography>
                     <Typography sx={{ mt: 0.5, color: 'primary.main', fontWeight: 600 }}>{item.degree}</Typography>
+                    {item.gpa && <Typography variant="body2" sx={{ mt: 0.5, color: 'text.secondary', fontWeight: 600 }}>IPK {item.gpa}</Typography>}
                     <Typography variant="body2" sx={{ mt: 2, color: 'text.secondary', lineHeight: 1.75 }}>{item.achievement}</Typography>
                   </Box>
                 </Stack>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowOutward, Close, GitHub, Inventory2, School } from '@mui/icons-material';
+import { ArrowOutward, Close, GitHub, Inventory2, NavigateBefore, NavigateNext, School } from '@mui/icons-material';
 import { Box, Button, Card, CardActionArea, CardContent, Chip, Container, Dialog, DialogContent, DialogTitle, IconButton, Stack, Typography } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
@@ -12,6 +12,12 @@ const coverIcons = { inventory: Inventory2, school: School, github: GitHub };
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openProject = (project) => {
+    setCurrentImageIndex(0);
+    setSelectedProject(project);
+  };
 
   return (
     <Box id="projects" component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: 'background.paper', borderTop: 1, borderBottom: 1, borderColor: 'divider' }}>
@@ -24,7 +30,7 @@ export default function Projects() {
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2 }}>
           {projects.map((project, index) => (
             <Card key={project.title} component={motion.div} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.45, delay: index * 0.1 }} sx={{ height: '100%', border: 1, borderColor: 'divider', bgcolor: 'background.default' }}>
-              <CardActionArea onClick={() => setSelectedProject(project)} aria-label={`Lihat detail ${project.title}`}>
+              <CardActionArea onClick={() => openProject(project)} aria-label={`Lihat detail ${project.title}`}>
                 {project.images.length > 0 ? (
                   <Swiper modules={[Pagination]} pagination={{ clickable: true }} spaceBetween={0} slidesPerView={1}>
                     {project.images.map((image) => (
@@ -59,16 +65,49 @@ export default function Projects() {
           ))}
         </Box>
       </Container>
-      <Dialog open={Boolean(selectedProject)} onClose={() => setSelectedProject(null)} fullWidth maxWidth="sm">
+      <Dialog
+        open={Boolean(selectedProject)}
+        onClose={() => setSelectedProject(null)}
+        fullWidth
+        maxWidth="sm"
+        scroll="paper"
+        PaperProps={{
+          sx: {
+            overflowY: 'auto',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            '&::-webkit-scrollbar': { display: 'none' },
+          },
+        }}
+      >
         {selectedProject && (
           <>
-            <DialogTitle sx={{ pr: 7 }}>
+            <DialogContent sx={{ p: 0, position: 'relative', flex: '0 0 auto', overflowY: 'visible' }}>
+              {selectedProject.images.length > 0 && (
+                <Box sx={{ position: 'relative' }}>
+                  <Box component="img" src={selectedProject.images[currentImageIndex]} alt={`Tampilan ${selectedProject.title}`} sx={{ display: 'block', width: '100%', aspectRatio: '1.6', maxHeight: 400, objectFit: 'cover' }} />
+                  {selectedProject.images.length > 1 && (
+                    <>
+                      <IconButton aria-label="Gambar sebelumnya" onClick={() => setCurrentImageIndex((index) => (index - 1 + selectedProject.images.length) % selectedProject.images.length)} sx={{ position: 'absolute', top: '50%', left: 12, transform: 'translateY(-50%)', bgcolor: 'rgba(0, 0, 0, 0.55)', color: 'common.white', '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.75)' } }}>
+                        <NavigateBefore />
+                      </IconButton>
+                      <IconButton aria-label="Gambar berikutnya" onClick={() => setCurrentImageIndex((index) => (index + 1) % selectedProject.images.length)} sx={{ position: 'absolute', top: '50%', right: 12, transform: 'translateY(-50%)', bgcolor: 'rgba(0, 0, 0, 0.55)', color: 'common.white', '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.75)' } }}>
+                        <NavigateNext />
+                      </IconButton>
+                    </>
+                  )}
+                  <Typography aria-live="polite" variant="caption" sx={{ position: 'absolute', bottom: 12, left: '50%', transform: 'translateX(-50%)', px: 1.25, py: 0.5, borderRadius: 4, bgcolor: 'rgba(0, 0, 0, 0.65)', color: 'common.white' }}>
+                    {currentImageIndex + 1} / {selectedProject.images.length}
+                  </Typography>
+                </Box>
+              )}
+            </DialogContent>
+            <DialogTitle sx={{ pr: 7, pb: 0 }}>
               <Typography variant="overline" color="text.secondary" fontWeight={700}>{selectedProject.category}</Typography>
               <Typography variant="h4" sx={{ fontSize: 28 }}>{selectedProject.title}</Typography>
-              <IconButton aria-label="Tutup detail proyek" onClick={() => setSelectedProject(null)} sx={{ position: 'absolute', right: 12, top: 12 }}><Close /></IconButton>
             </DialogTitle>
-            <DialogContent>
-              {selectedProject.images.length > 0 && <Box component="img" src={selectedProject.images[0]} alt={`Tampilan ${selectedProject.title}`} sx={{ display: 'block', width: '100%', aspectRatio: '1.6', objectFit: 'cover', borderRadius: 1, mb: 2 }} />}
+            <IconButton aria-label="Tutup detail proyek" onClick={() => setSelectedProject(null)} sx={{ position: 'absolute', right: 12, top: 12, zIndex: 1, bgcolor: 'background.paper', boxShadow: 1, '&:hover': { bgcolor: 'background.paper' } }}><Close /></IconButton>
+            <DialogContent sx={{ flex: '0 0 auto', overflowY: 'visible' }}>
               <Typography color="text.secondary" sx={{ lineHeight: 1.8 }}>{selectedProject.details}</Typography>
               <Stack direction="row" flexWrap="wrap" gap={0.8} sx={{ mt: 2.5 }}>
                 {selectedProject.technologies.map((technology) => <Chip key={technology} size="small" label={technology} />)}

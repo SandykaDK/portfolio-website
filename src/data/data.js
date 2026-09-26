@@ -21,9 +21,10 @@ export const education = [
   {
     institution: 'Universitas Dinamika',
     degree: 'S1 Sistem Informasi',
+    gpa: '3,82',
     period: '2022 — 2026',
     logo: '/images/logo-undika.png',
-    achievement: 'IPK 3,82. Mata kuliah relevan meliputi SQL, analisis dan desain sistem informasi, pengujian perangkat lunak, serta manajemen proyek sistem informasi.',
+    achievement: 'Mata kuliah relevan meliputi SQL, analisis dan desain sistem informasi, pengujian perangkat lunak, serta manajemen proyek sistem informasi.',
   },
 ];
 
@@ -74,9 +75,14 @@ export const projects = [
     description: 'Sistem berbasis web untuk mendigitalisasi pencatatan persediaan 98 item obat di Puskesmas Pembantu Mojosulur.',
     details: 'Dikembangkan menggunakan Laravel dengan fitur pencatatan stok masuk dan keluar serta laporan persediaan. Metode FIFO dan Min-Max diterapkan untuk membantu pengelolaan stok. Pengujian Black-Box dan UAT dilakukan bersama 3 staf dengan tingkat penerimaan pengguna 90%.',
     technologies: ['Laravel', 'PHP', 'SQL', 'FIFO', 'Min-Max', 'Black-Box Testing', 'UAT'],
-    images: [],
+    images: [
+      'https://picsum.photos/seed/medstock-1/1200/750',
+      'https://picsum.photos/seed/medstock-2/1200/750',
+      'https://picsum.photos/seed/medstock-3/1200/750',
+    ],
     coverIcon: 'inventory',
     coverLabel: 'Manajemen persediaan obat',
+    source: 'https://github.com/sandykadk/PustumedApp',
   },
   {
     title: 'Pelatihan Microsoft Word & Canva',
@@ -87,17 +93,6 @@ export const projects = [
     images: [],
     coverIcon: 'school',
     coverLabel: 'Pelatihan literasi digital',
-  },
-  {
-    title: 'PustumedApp',
-    category: 'GitHub Repository',
-    description: 'Aplikasi berbasis Blade untuk membantu pengelolaan data Puskesmas Pembantu.',
-    details: 'Proyek aplikasi yang dikembangkan menggunakan Blade dan tersedia sebagai repository publik di GitHub.',
-    technologies: ['Blade', 'GitHub'],
-    images: [],
-    coverIcon: 'github',
-    coverLabel: 'Aplikasi Puskesmas Pembantu',
-    source: 'https://github.com/sandykadk/PustumedApp',
   },
   {
     title: 'POS_Toko',
