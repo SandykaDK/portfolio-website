@@ -11,7 +11,7 @@ export const profile = {
   cvUrl: '/CV_ATS_Sandyka.pdf',
   cvFileName: 'CV_ATS_Sandyka.pdf',
   socials: [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sandykadk', icon: 'linkedin' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sandykadwikurniawan/', icon: 'linkedin' },
     { label: 'Email', href: 'mailto:sandyka472@gmail.com', icon: 'email' },
     { label: 'Telepon', href: 'tel:+6289620106214', icon: 'phone' },
   ],
