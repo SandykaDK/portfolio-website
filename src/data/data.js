@@ -76,9 +76,9 @@ export const projects = [
     details: 'Dikembangkan menggunakan Laravel dengan fitur pencatatan stok masuk dan keluar serta laporan persediaan. Metode FIFO dan Min-Max diterapkan untuk membantu pengelolaan stok. Pengujian Black-Box dan UAT dilakukan bersama 3 staf dengan tingkat penerimaan pengguna 90%.',
     technologies: ['Laravel', 'PHP', 'SQL', 'FIFO', 'Min-Max', 'Black-Box Testing', 'UAT'],
     images: [
-      'https://picsum.photos/seed/medstock-1/1200/750',
-      'https://picsum.photos/seed/medstock-2/1200/750',
-      'https://picsum.photos/seed/medstock-3/1200/750',
+      // 'https://picsum.photos/seed/medstock-1/1200/750',
+      // 'https://picsum.photos/seed/medstock-2/1200/750',
+      // 'https://picsum.photos/seed/medstock-3/1200/750',
     ],
     coverIcon: 'inventory',
     coverLabel: 'Manajemen persediaan obat',
