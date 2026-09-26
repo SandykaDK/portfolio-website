@@ -10,7 +10,7 @@ export default function Hero() {
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1.15fr 0.85fr' }, alignItems: 'center', gap: { xs: 5, md: 8 } }}>
           <Box component={motion.div} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <Typography variant="overline" sx={{ color: 'text.secondary', fontWeight: 700, letterSpacing: 1.4 }}>
-              {profile.location} <Box component="span" sx={{ color: 'secondary.main' }}>·</Box> TERBUKA UNTUK PELUANG
+              {profile.location} <Box component="span" sx={{ color: 'secondary.main' }}>·</Box> OPEN TO WORK
             </Typography>
             <Typography variant="h1" sx={{ mt: 2, fontSize: { xs: 48, sm: 64, md: 78 }, lineHeight: 1.02, maxWidth: 680 }}>
               Halo, saya {profile.name.split(' ')[0]}<Box component="span" sx={{ color: 'secondary.main' }}>.</Box>
