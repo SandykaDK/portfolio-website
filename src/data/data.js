@@ -37,8 +37,8 @@ export const experience = [
     logo: '/images/logo-sofco.jpeg',
     responsibilities: [
       'Merancang dan mengeksekusi 876 test case di Notion untuk aplikasi HRIS, Recruitment, dan KPI.',
-      'Melacak masukan klien dan memvalidasi bug, serta menyusun 6 laporan progres bulanan untuk mendukung penyelesaian bersama tim developer.',
-      'Menyusun 329 panduan pengguna dan traceability matrix untuk 329 menu HRIS.',
+      'Memantau masukan klien dan memvalidasi bug, serta menyusun 6 laporan progres bulanan untuk mendukung penyelesaian bersama tim developer.',
+      'Menyusun 329 user guide dan traceability matrix menu HRIS.',
     ],
     skills: ['Postman', 'Playwright', 'SQL', 'Test Case', 'Bug Reporting', 'STLC'],
   },
@@ -106,7 +106,7 @@ export const projects = [
     source: 'https://github.com/sandykadk/POS_Toko',
   },
   {
-    title: 'sauce_demo_playwright',
+    title: 'SauceDemo Playwright',
     category: 'GitHub Repository',
     description: 'Automated end-to-end (E2E) testing suite for SauceDemo website built with Playwright.',
     details: 'Repository publik berisi suite pengujian end-to-end otomatis untuk website SauceDemo menggunakan Playwright.',
