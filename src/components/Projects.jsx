@@ -22,9 +22,9 @@ export default function Projects() {
   return (
     <Box id="projects" component="section" sx={{ py: { xs: 8, md: 12 }, bgcolor: 'background.paper', borderTop: 1, borderBottom: 1, borderColor: 'divider' }}>
       <Container maxWidth="lg">
-        <Typography variant="overline" color="text.secondary" fontWeight={700}>DIPILIH DENGAN SENGAJA</Typography>
+        <Typography variant="overline" color="text.secondary" fontWeight={700}>PORTFOLIO</Typography>
         <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ sm: 'end' }} sx={{ mb: 4 }}>
-          <Typography variant="h2" sx={{ mt: 0.5, fontSize: { xs: 34, md: 44 } }}>Proyek pilihan</Typography>
+          <Typography variant="h2" sx={{ mt: 0.5, fontSize: { xs: 34, md: 44 } }}>Proyek saya</Typography>
           <Typography color="text.secondary" sx={{ maxWidth: 360, mt: { xs: 1, sm: 0 } }}>Beberapa hal yang pernah saya rancang, bangun, dan pelajari.</Typography>
         </Stack>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' }, gap: 2 }}>
@@ -35,7 +35,7 @@ export default function Projects() {
                   <Swiper modules={[Pagination]} pagination={{ clickable: true }} spaceBetween={0} slidesPerView={1}>
                     {project.images.map((image) => (
                       <SwiperSlide key={image}>
-                        <Box component="img" src={image} alt={`Tampilan ${project.title}`} loading="lazy" sx={{ width: '100%', aspectRatio: '1.55', objectFit: 'cover', display: 'block' }} />
+                        <Box component="img" src={image} alt={`Tampilan ${project.title}`} loading="lazy" sx={{ width: '100%', aspectRatio: '1.55', objectFit: 'contain', display: 'block', bgcolor: 'background.default' }} />
                       </SwiperSlide>
                     ))}
                   </Swiper>
@@ -85,7 +85,7 @@ export default function Projects() {
             <DialogContent sx={{ p: 0, position: 'relative', flex: '0 0 auto', overflowY: 'visible' }}>
               {selectedProject.images.length > 0 && (
                 <Box sx={{ position: 'relative' }}>
-                  <Box component="img" src={selectedProject.images[currentImageIndex]} alt={`Tampilan ${selectedProject.title}`} sx={{ display: 'block', width: '100%', aspectRatio: '1.6', maxHeight: 400, objectFit: 'cover' }} />
+                  <Box component="img" src={selectedProject.images[currentImageIndex]} alt={`Tampilan ${selectedProject.title}`} sx={{ display: 'block', width: '100%', aspectRatio: '1.6', maxHeight: 400, objectFit: 'contain', bgcolor: 'background.default' }} />
                   {selectedProject.images.length > 1 && (
                     <>
                       <IconButton aria-label="Gambar sebelumnya" onClick={() => setCurrentImageIndex((index) => (index - 1 + selectedProject.images.length) % selectedProject.images.length)} sx={{ position: 'absolute', top: '50%', left: 12, transform: 'translateY(-50%)', bgcolor: 'rgba(0, 0, 0, 0.55)', color: 'common.white', '&:hover': { bgcolor: 'rgba(0, 0, 0, 0.75)' } }}>
