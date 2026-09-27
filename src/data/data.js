@@ -95,7 +95,7 @@ export const projects = [
   },
   {
     title: 'POS_Toko',
-    category: 'GitHub Repository',
+    category: 'Web Application · 2026',
     description: 'Aplikasi POS Toko dengan Laravel, React.JS, dan MySQL, dilengkapi fitur pengelolaan produk, kasir, cetak struk, dan dashboard penjualan.',
     details: 'Repository publik aplikasi POS Toko. Backend menggunakan Laravel, frontend menggunakan React JS, dan database menggunakan MySQL. Fitur yang tersedia meliputi pengelolaan produk, kasir, cetak struk, dan dashboard penjualan.',
     technologies: ['Laravel', 'React.JS', 'MySQL', 'GitHub'],
@@ -112,7 +112,7 @@ export const projects = [
   },
   {
     title: 'SauceDemo Playwright',
-    category: 'GitHub Repository',
+    category: 'Software QA Automation · 2026',
     description: 'Suite pengujian end-to-end (E2E) otomatis untuk SauceDemo menggunakan Playwright, dengan 49 test case: 42 lulus dan 7 gagal.',
     details: 'Repository publik berisi suite pengujian end-to-end otomatis untuk website SauceDemo menggunakan Playwright. Pengujian mencakup 49 test case, dengan hasil 42 lulus dan 7 gagal.',
     technologies: ['JavaScript', 'Playwright', 'GitHub'],
